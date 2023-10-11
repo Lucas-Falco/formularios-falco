@@ -1,0 +1,95 @@
+<h1>reactive-forms works!</h1>
+
+<form [formGroup]="userForm" >
+<!--nombre-->
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+
+            <input 
+                formControlName="nombre"  
+                type="text"  
+                class="form-control" 
+                [ngClass]="{'is-invalid': userForm.controls['nombre'].invalid && userForm.controls['nombre'].touched}"
+                id="staticName" 
+                value="Nombre"
+            >
+
+        </div>
+    </div>
+
+    <!--Apellido-->
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Apellido</label>
+        <div class="col-sm-10">
+
+            <input
+                formControlName="apellido" 
+                type="text"  
+                class="form-control"
+                [ngClass]="{'is-invalid': userForm.controls['apellido'].invalid && userForm.controls['apellido'].touched}"
+                id="staticApellido" 
+                value="Apellido"
+            >
+
+        </div>
+    </div>
+
+    <!--mail-->
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+
+            <input 
+                formControlName="email" 
+                type="text"  
+                class="form-control" 
+                [ngClass]="{'is-invalid': userForm.controls['email'].invalid && userForm.controls['email'].touched}"
+                id="staticEmail" 
+                value="email@example.com"
+            >
+
+        </div>
+    </div>
+
+    <!--contraseña-->
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+
+            <input 
+                formControlName="contrasena" 
+                type="password" 
+                [ngClass]="{'is-invalid': userForm.controls['contrasena'].invalid && userForm.controls['contrasena'].touched}"
+                class="form-control" 
+                id="inputPassword"
+            > 
+        </div>
+    </div>
+
+        <button
+            [disabled]="userForm.invalid"
+            (click)="onSubmit()"
+            class="btn btn-primary" 
+            type="submit">Registrar
+        </button>
+</form>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">APELLIDO</th>
+        <th scope="col">EMAIL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of personas">
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.email }}</td>
+      </tr>
+      
+    </tbody>
+  </table>
